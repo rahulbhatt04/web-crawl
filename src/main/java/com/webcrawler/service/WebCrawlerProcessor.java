@@ -67,10 +67,9 @@ public @Data class WebCrawlerProcessor {
 		}
 	}
 
-
 	private boolean allThreadsAreDone() throws InterruptedException {
 		Thread.sleep(PAUSE_TIME);
-		Set<WebCrawlerTask> taskSet = new HashSet<>();
+		Set<WebCrawlerTask> tasksInCurrentIteration = new HashSet<>();
 		Iterator<Future<WebCrawlerTask>> iterator = runningTask.iterator();
 
 		while (iterator.hasNext()) {
@@ -78,13 +77,13 @@ public @Data class WebCrawlerProcessor {
 			if (future.isDone()) {
 				iterator.remove();
 				try {
-					taskSet.add(future.get());
+					tasksInCurrentIteration.add(future.get());
 				} catch (InterruptedException | ExecutionException e) {
 					// e.printStackTrace();
 				}
 			}
 		}
-		taskSet.stream().forEach(task -> {
+		tasksInCurrentIteration.stream().forEach(task -> {
 			addNewURLs(task);
 		});
 		return (runningTask.size() > 0);

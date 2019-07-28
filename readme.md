@@ -19,15 +19,17 @@ it can go through multiple pages can point to one page we need to keep an record
 
 
 
-Solution
+Solution--
 
 Approach 1 Started with single threaded solution  but when I tried complex website it took forever
 
 Than implemented multithreaded solution. 
 
+Assumption --
+
 In case of wrong URL code will return same url back not other url 
 
-Its spring boot application that is getting so that we can show how we will expose this service 
+Its spring boot application that is getting  initialize  so that we can show how we will expose this service 
 
 Due to time constraints  I have tested with unit test cases not with rest application
 
