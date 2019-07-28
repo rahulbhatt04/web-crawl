@@ -1,4 +1,4 @@
-package com.example.webcrawler.models;
+package com.webcrawler.models;
 
 import java.util.List;
 

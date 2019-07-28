@@ -27,5 +27,5 @@ In case of wrong URL code will return same url back not other url
 
 Its spring boot application that is getting so that we can show how we will expose this service 
 
-Due to time constraints  I have tested with unit test cases not 
+Due to time constraints  I have tested with unit test cases not with rest application
 

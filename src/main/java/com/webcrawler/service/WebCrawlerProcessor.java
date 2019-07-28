@@ -1,4 +1,4 @@
-package com.example.webcrawler.service;
+package com.webcrawler.service;
 
 import java.io.IOException;
 import java.net.URL;

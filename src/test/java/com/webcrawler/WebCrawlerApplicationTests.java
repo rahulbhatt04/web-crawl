@@ -1,4 +1,4 @@
-package com.example.webcrawler;
+package com.webcrawler;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.example.webcrawler.service;
+package com.webcrawler.service;
 
 import java.net.URL;
 import java.util.Set;
@@ -6,8 +6,8 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.example.webcrawler.models.Response;
-import com.example.webcrawler.models.URLRequest;
+import com.webcrawler.models.Response;
+import com.webcrawler.models.URLRequest;
 
 /**
  * As of now this service handle the Incoming request call the processor and return back response in the format that client needs 

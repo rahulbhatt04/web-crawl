@@ -1,4 +1,4 @@
-package com.example.webcrawler;
+package com.webcrawler;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -11,9 +11,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.example.webcrawler.models.URLRequest;
-import com.example.webcrawler.models.URLRequest.ActionCode;
-import com.example.webcrawler.service.WebCrawlerService;
+import com.webcrawler.UrlController;
+import com.webcrawler.models.URLRequest;
+import com.webcrawler.models.URLRequest.ActionCode;
+import com.webcrawler.service.WebCrawlerService;
 
 @RunWith(MockitoJUnitRunner.class)
 

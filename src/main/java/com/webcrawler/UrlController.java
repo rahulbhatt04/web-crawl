@@ -1,4 +1,4 @@
-package com.example.webcrawler;
+package com.webcrawler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.webcrawler.models.Response;
-import com.example.webcrawler.models.URLRequest;
-import com.example.webcrawler.service.WebCrawlerService;
+import com.webcrawler.models.Response;
+import com.webcrawler.models.URLRequest;
+import com.webcrawler.service.WebCrawlerService;
 
 /**
  * Really back and forth on the naming convention here 
