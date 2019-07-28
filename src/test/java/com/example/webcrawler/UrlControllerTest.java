@@ -34,10 +34,10 @@ public class UrlControllerTest {
 	@Test
 	public void baseTest() throws Exception {
 
-		URLRequest request = URLRequest.builder().action(ActionCode.CRAWEL).url("Test.com").maxDepth(12).maxUrls(1000)
+		URLRequest request = URLRequest.builder().action(ActionCode.CRAWL).url("Test.com").maxDepth(12).maxUrls(1000)
 				.build();
 		urlController.process(
-				URLRequest.builder().action(ActionCode.CRAWEL).url("Test.com").maxDepth(12).maxUrls(1000).build());
+				URLRequest.builder().action(ActionCode.CRAWL).url("Test.com").maxDepth(12).maxUrls(1000).build());
 		verify(webCrawlerService, times(1)).crawl(request);
 
 	}

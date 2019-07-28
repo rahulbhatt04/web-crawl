@@ -49,7 +49,7 @@ public class UrlController {
 	@ResponseBody
 	public ResponseEntity<Response> process(@RequestBody URLRequest request) throws Exception {
 		switch (request.getAction()) {
-		case CRAWEL:
+		case CRAWL:
 			return ResponseEntity.ok(webcrawlerService.crawl(request));
 		}
 		return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();

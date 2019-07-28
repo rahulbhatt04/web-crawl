@@ -18,7 +18,7 @@ public @Data class URLRequest {
 
 	
 	public enum ActionCode {
-		CRAWEL;
+		CRAWL;
 	}
 
 }

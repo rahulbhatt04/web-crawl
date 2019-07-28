@@ -28,11 +28,12 @@ import lombok.Data;
  * */
 @Builder
 public @Data class WebCrawlerProcessor {
+	//can be configured from etcd
 	public static final int THREAD_COUNT = 5;
 	private static final long PAUSE_TIME = 1000;
 
 	final private Set<String> visitedUrl = new HashSet<>();
-	final private List<Future<WebCrawlerTask>> futures = new ArrayList<>();
+	final private List<Future<WebCrawlerTask>> runningTask = new ArrayList<>();
 	final private ExecutorService executorService = Executors.newFixedThreadPool(THREAD_COUNT);
 	final Logger logger = LoggerFactory.getLogger(WebCrawlerProcessor.class);
 	private String domainName;
@@ -61,14 +62,14 @@ public @Data class WebCrawlerProcessor {
 			visitedUrl.add(url.toString());
 			WebCrawlerTask grabPage = new WebCrawlerTask(url, depth);
 			Future<WebCrawlerTask> future = executorService.submit(grabPage);
-			futures.add(future);
+			runningTask.add(future);
 		}
 	}
 
 	private boolean allThreadsAreDone() throws InterruptedException {
 		Thread.sleep(PAUSE_TIME);
 		Set<WebCrawlerTask> pageSet = new HashSet<>();
-		Iterator<Future<WebCrawlerTask>> iterator = futures.iterator();
+		Iterator<Future<WebCrawlerTask>> iterator = runningTask.iterator();
 
 		while (iterator.hasNext()) {
 			Future<WebCrawlerTask> future = iterator.next();
@@ -87,7 +88,7 @@ public @Data class WebCrawlerProcessor {
 			addNewURLs(grabPage);
 		}
 
-		return (futures.size() > 0);
+		return (runningTask.size() > 0);
 	}
 
 	private void addNewURLs(WebCrawlerTask task) {
