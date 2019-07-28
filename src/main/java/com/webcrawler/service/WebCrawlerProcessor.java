@@ -21,7 +21,7 @@ import lombok.Data;
 /**
  * This is basically a processor and manager  it does following things 
  * 1. Start basic url  
- * 2. Manager thread to make sure that proper shutdown happened
+ * 2. Manager for  thread to make sure that proper shutdown happened
  * 
  * 
  * 

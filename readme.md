@@ -9,14 +9,14 @@ Thought process --
 
 I will be using Java for  solving the problem. Following are things comes to mind 
 
-1. Every URL can have multiple pages it can go through multiple pages can point to one page we need to keep an record of which pages we visited 
+1. Every URL can have multiple pages 
+it can go through multiple pages can point to one page we need to keep an record of which pages we visited 
 
-2. We need to have some way to know a particular url is in the same domain or not. the way we can solve it by putting domain name in the example Monzo.com to decide.
-it might not cover cases for the same domain name used in the URL param for some external URL like facebook.com/campaign?test=monzo.com. but it will cover cases like http and https.
+2. We need to have some way to know a particular url is in the same domain or not.
+ the way we can solve it by putting domain name in the example  to decide.
 
 3. Given a web crawler we need to worry about the memory how many URL can we visit. 
 
-4. We can use BFS or DFS both should be similar 
 
 
 Solution
