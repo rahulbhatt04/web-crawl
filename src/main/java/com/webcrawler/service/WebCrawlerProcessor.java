@@ -41,6 +41,7 @@ public @Data class WebCrawlerProcessor {
 	private final int maxDepth;
 	private final int maxUrls;
 
+
 	public Set<String> process(URL start) throws IOException, InterruptedException {
 
 		// stay within same site
@@ -66,9 +67,10 @@ public @Data class WebCrawlerProcessor {
 		}
 	}
 
+
 	private boolean allThreadsAreDone() throws InterruptedException {
 		Thread.sleep(PAUSE_TIME);
-		Set<WebCrawlerTask> pageSet = new HashSet<>();
+		Set<WebCrawlerTask> taskSet = new HashSet<>();
 		Iterator<Future<WebCrawlerTask>> iterator = runningTask.iterator();
 
 		while (iterator.hasNext()) {
@@ -76,27 +78,25 @@ public @Data class WebCrawlerProcessor {
 			if (future.isDone()) {
 				iterator.remove();
 				try {
-					pageSet.add(future.get());
-				} 
-				catch (InterruptedException | ExecutionException e) {
-					//e.printStackTrace();
+					taskSet.add(future.get());
+				} catch (InterruptedException | ExecutionException e) {
+					// e.printStackTrace();
 				}
 			}
 		}
-
-		for (WebCrawlerTask grabPage : pageSet) {
-			addNewURLs(grabPage);
-		}
-
+		taskSet.stream().forEach(task -> {
+			addNewURLs(task);
+		});
 		return (runningTask.size() > 0);
 	}
 
 	private void addNewURLs(WebCrawlerTask task) {
-		for (URL url : task.getUrlList()) {
+		task.getUrlList().stream().forEach(url -> {
 			addUrlForCrawling(url, task.getDepth() + 1);
-		}
+		});
 	}
 
+	/**All the constraints are here */
 	private boolean keepGoing(URL url, int depth) {
 		if (visitedUrl.contains(url.toString())) {
 			return false;
@@ -104,10 +104,11 @@ public @Data class WebCrawlerProcessor {
 		if (!url.getHost().equals(domainName)) {
 			return false;
 		}
-		if (depth > maxDepth) {
+		
+		if (visitedUrl.size() >= maxUrls) {
 			return false;
 		}
-		if (visitedUrl.size() >= maxUrls) {
+		if (depth > maxDepth) {
 			return false;
 		}
 		return true;
