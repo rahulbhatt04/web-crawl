@@ -7,7 +7,7 @@ We'd like you to write a simple web crawler in a programming language you're fam
 
 Thought process -- 
 
-I will be using Java for the solving the problem. Following are things comes to mind 
+I will be using Java for  solving the problem. Following are things comes to mind 
 
 1. Every URL can have multiple pages it can go through multiple pages can point to one page we need to keep an record of which pages we visited 
 
